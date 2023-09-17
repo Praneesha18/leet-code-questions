@@ -1,0 +1,51 @@
+#include<stdio.h>
+#include<string.h>
+int isdigit(char c)
+{
+    if(c>='0'&&c<='9')
+    {
+        return 1;
+    }
+    return 0;
+}
+void substring(int start, int end,char c[],int temp)
+{
+    int count,j=0;
+    char b[end-start-1];
+    for(count=start+1;count<end;count++)
+    {
+        b[j]=c[count];
+        j++;
+    }
+    for(count=0;count<temp;count++)
+    {
+        printf("%s",b);
+    }
+}
+int main()
+{
+    char c[100];
+    int i=0,j;
+    int temp;
+    int length,start=0,end=0;
+    printf("enter the string \n");
+    scanf("%s",c);
+    length = strlen(c); 
+    while(i<length)
+    {
+        if(isdigit(c[i]))
+        {
+            temp=(int)c[i];
+            temp=temp-48;
+            i++;
+            start=i;
+            while(c[i]!=']')
+            {
+                i++;
+            }
+            end = i;
+            substring(start,end,c,temp);
+            i++;
+        }
+    }
+}
